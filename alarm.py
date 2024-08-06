@@ -1,7 +1,13 @@
 import time 
+from win10toast import ToastNotifier
+
+toaster = ToastNotifier()
 
 CLEAR = "\033[2J"
 CLEAR_AND_RETURN = "\033[H"
+
+title = "Alarm"
+message = "Time up!!"
 
 def alarm(seconds):
     time_elapsed = 0 
@@ -15,6 +21,7 @@ def alarm(seconds):
         seconds_left = time_left % 60
 
         print(f"{minutes_left:02d}:{seconds_left:02d}")
+    toaster.show_toast(title, message )
 
 
 minutesTotal = int(input("How many minutes to wait: "))
